@@ -26,8 +26,6 @@ class Rotes {
 
         $this->parameters = $url ? array_values($url) : [];
         call_user_func_array([$this->controller, $this->func], $this->parameters);
-
-        var_dump($this);
     }
 
     private function url(){
