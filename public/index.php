@@ -17,7 +17,9 @@ include './../app/Libraries/Controller.php';
 </head>
 <body>
  <?php
+    include "../App/Views/layout/header.php";
     $rotes = new Rotes();
+    include "../App/Views/layout/footer.php";
  ?>    
 
 </body>
