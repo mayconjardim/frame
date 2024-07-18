@@ -2,8 +2,10 @@
 include './../app/config.php';
 include './../app/Libraries/Rotes.php';
 include './../app/Libraries/Controller.php';
-
+include './../app/Libraries/Database.php';
+$db = new Database;
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
