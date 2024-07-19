@@ -1,8 +1,7 @@
 <?php
 include './../app/config.php';
-include './../app/Libraries/Rotes.php';
-include './../app/Libraries/Controller.php';
-include './../app/Libraries/Database.php';
+include './../app/autoload.php';
+
 $db = new Database;
 ?>
 
