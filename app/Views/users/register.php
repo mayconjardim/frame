@@ -6,22 +6,34 @@
         <div class="card-body">
             <p class="card-text"><small class="text-muted">Preecha o formulário abaixo para fazer seu cadastro</small></p>
 
-            <form name="cadastrar" method="POST" action="<?= URL ?>/users/register" class="mt-4">
+            <form name="register" method="POST" action="<?= URL ?>/users/register" class="mt-4">
                 <div class="form-group">
-                    <label for="nome">Nome: <sup class="text-danger">*</sup></label>
-                    <input type="text" name="nome" id="nome" class="form-control"  required >
+                    <label for="name">Nome: <sup class="text-danger">*</sup></label>
+                    <input type="text" name="name" id="name" value="<?=$data['name']?>" class="form-control <?= $data['name_erro'] ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= $data['name_erro'] ?>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="email">E-mail: <sup class="text-danger">*</sup></label>
-                    <input type="email" name="email" id="email" class="form-control"  required >
+                    <input type="email" name="email" id="email" value="<?=$data['email']?>" class="form-control <?= $data['email_erro'] ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= $data['email_erro'] ?>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="senha">Senha: <sup class="text-danger">*</sup></label>
-                    <input type="password" name="senha" id="senha" class="form-control"  required >
+                    <label for="password">Senha: <sup class="text-danger">*</sup></label>
+                    <input type="password" name="password" id="password" value="<?=$data['password']?>" class="form-control  <?= $data['password_erro'] ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= $data['password_erro'] ?>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="confirmar_senha">Confirme a Senha: <sup class="text-danger">*</sup></label>
-                    <input type="password" name="confirmar_senha" id="confirmar_senha" class="form-control" required >
+                    <label for="confirm_password">Confirme a Senha: <sup class="text-danger">*</sup></label>
+                    <input type="password" name="confirm_password" id="confirm_password" value="<?=$data['confirm_password']?>"class="form-control <?= $data['confirm_password_erro'] ? 'is-invalid' : '' ?>">
+                    <div class="invalid-feedback">
+                        <?= $data['confirm_password_erro'] ?>
+                    </div>
                 </div>
 
                 <div class="row">
