@@ -22,34 +22,40 @@ class Users extends Controller {
                 $data['password'] = trim($form['password']);
                 $data['confirm_password'] = trim($form['confirm_password']);
     
-                if (empty($form['name'])) :
-                    $data['name_erro'] = 'Preencha o campo name';
-                endif;
-    
-                if (empty($form['email'])) :
-                    $data['email_erro'] = 'Preencha o campo e-mail';
-                endif;
-    
-                if (empty($form['password'])) :
-                    $data['password_erro'] = 'Preencha o campo password';
-                elseif (strlen($form['password']) < 6) :
-                    $data['password_erro'] = 'A password deve ter no minimo 6 caracteres';
-                endif;
-    
-                if (empty($form['confirm_password'])) :
-                    $data['confirm_password_erro'] = 'Confirme a senha';
-                else:
-                    if($form['password'] != $form['confirm_password']):
-                        $data['confirm_password_erro'] = 'As senhas são diferentes';
-                    endif;
-                endif;
-    
-                if(empty($data['name_erro']) && empty($data['email_erro']) && empty($data['password_erro']) && empty($data['confirm_password_erro'])):
-                    echo 'Pode realizar o cadastro';
-                endif;
+                if (in_array("", $form)):
 
+                    if (empty($form['name'])) :
+                        $data['name_erro'] = 'Preencha o campo name';
+                    endif;
+        
+                    if (empty($form['email'])) :
+                        $data['email_erro'] = 'Preencha o campo e-mail';
+                    endif;
+        
+                    if (empty($form['password'])) :
+                        $data['password_erro'] = 'Preencha o campo senha';
+                    endif;
+        
+                    if (empty($form['confirm_password'])) :
+                        $data['confirm_password_erro'] = 'Confirme a senha';
+                    endif;
+        
+                    if(empty($data['name_erro']) && empty($data['email_erro']) && empty($data['password_erro']) && empty($data['confirm_password_erro'])):
+                        echo 'Pode realizar o cadastro';
+                    endif;
+
+                else:
+                    if (strlen($form['password']) < 6) :
+                        $data['password_erro'] = 'A password deve ter no minimo 6 caracteres';
+                    elseif($form['password'] != $form['confirm_password']):
+                        $data['confirm_password_erro'] = 'As senhas são diferentes';
+                    else:
+                        echo 'Pode cadastrar';
+                    endif;
+
+
+                endif;
             endif;
-    
             $this->view('users/register', $data);
         }
 }
