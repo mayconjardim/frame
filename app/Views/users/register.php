@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col p-3">
                         <input type="submit" value="Cadastrar" class="btn btn-info btn-block">
                     </div>
                     <div class="col">

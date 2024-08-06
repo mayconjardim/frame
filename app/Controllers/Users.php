@@ -25,7 +25,7 @@ class Users extends Controller {
                 if (in_array("", $form)):
 
                     if (empty($form['name'])) :
-                        $data['name_erro'] = 'Preencha o campo name';
+                        $data['name_erro'] = 'Preencha o campo nome';
                     endif;
         
                     if (empty($form['email'])) :
@@ -45,6 +45,13 @@ class Users extends Controller {
                     endif;
 
                 else:
+
+                    if(Validation::validateName($form['name'])) :
+                        $data['name_erro'] = 'O nome informado é invalido';
+                    elseif(Validation::validateName($form['email'])):
+                        $data['email_erro'] = 'O email informado é invalido';
+                    endif;
+
                     if (strlen($form['password']) < 6) :
                         $data['password_erro'] = 'A password deve ter no minimo 6 caracteres';
                     elseif($form['password'] != $form['confirm_password']):
