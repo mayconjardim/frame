@@ -2,6 +2,10 @@
 
 class Users extends Controller {
 
+    public function __construct() {
+        $this->userModel = $this->model('user');
+    }
+
         public function register()
         {
             $data = [
@@ -58,7 +62,13 @@ class Users extends Controller {
                         $data['confirm_password_erro'] = 'As senhas são diferentes';
                     else:
                         $ata['password'] = password_hash($form['password'], PASSWORD_DEFAULT);
-                        echo 'Pode cadastrar';
+
+                        if ($this->userModel->save($data)):
+                             echo 'Pode cadastrar';
+                        else:
+                            die("Erro ao armazenar usuario no banco de dados");
+                        endif;
+
                     endif;
 
                 endif;
