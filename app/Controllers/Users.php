@@ -57,9 +57,9 @@ class Users extends Controller {
                     elseif($form['password'] != $form['confirm_password']):
                         $data['confirm_password_erro'] = 'As senhas são diferentes';
                     else:
+                        $ata['password'] = password_hash($form['password'], PASSWORD_DEFAULT);
                         echo 'Pode cadastrar';
                     endif;
-
 
                 endif;
             endif;
